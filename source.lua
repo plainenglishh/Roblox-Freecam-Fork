@@ -21,6 +21,39 @@ local StarterGui = game:GetService("StarterGui")
 local Spring = {}
 Spring.__index = Spring
 
+-- Fort Bragg
+
+function BraggToggle()
+	if game.GameId == 2772166173 then
+        _G.Toggle = _G.Toggle or 1;
+
+        local Players = game:GetService("Players");
+        local Notif = require(Players.LocalPlayer.Character["C:Main"].Util.CreateNotification)
+
+        local Enabled = false;
+
+        if _G.Toggle == 1 then
+            _G.Toggle = 0;
+            Enabled = false;
+            Notif("Success", "Disabled name plates!");
+        else
+            _G.Toggle = 1;
+            Enabled = true;
+            Notif("Success", "Enabled name plates!");
+        end
+
+        for _, Player in pairs(Players:GetPlayers()) do
+            if Player.Character then
+                for _, NP in pairs(Player.Character:GetChildren()) do
+                    if NP.Name == "Nameplate" then
+                        NP.Enabled = Enabled;
+                    end
+                end
+            end
+        end
+	end
+end
+
 function Spring:Update(dt)
 	local t, k, d, x0, v0 = self.t, self.k, self.d, self.x, self.v
 	local a0 = k*(t - x0) + v0*d
