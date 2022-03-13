@@ -24,7 +24,7 @@ Spring.__index = Spring
 -- Fort Bragg
 
 function BraggToggle(Enabled)
-	if game.GameId == 2772166173 then
+	--[[if game.GameId == 2772166173 then
 		for _, Player in pairs(Players:GetPlayers()) do
 			if Player.Character then
 				for _, NP in pairs(Player.Character:GetChildren()) do
@@ -34,7 +34,7 @@ function BraggToggle(Enabled)
 				end
 			end
 		end
-	end
+	end]]
 end
 
 function Spring:Update(dt)
